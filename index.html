@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neural Network Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title-row">
+        <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="5" r="2"/>
+          <circle cx="5" cy="12" r="2"/>
+          <circle cx="19" cy="12" r="2"/>
+          <circle cx="12" cy="19" r="2"/>
+          <line x1="12" y1="7" x2="5" y2="10.3"/>
+          <line x1="12" y1="7" x2="19" y2="10.3"/>
+          <line x1="5" y1="13.7" x2="12" y2="17"/>
+          <line x1="19" y1="13.7" x2="12" y2="17"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        <h1>Neural Network Visualizer</h1>
+      </div>
+      <p class="subtitle">Watch signals flow through a multi-layer neural network in real time</p>
+    </header>
+
+    <div class="canvas-wrapper">
+      <canvas id="network"></canvas>
+      <div class="stats">
+        <span>Forward Passes: <span id="passCount">0</span></span>
+        <span>Active Signals: <span id="activeCount">0</span></span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="playPauseBtn">
+        <svg id="pauseIcon" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+        <svg id="playIcon" class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><path d="M8 5v14l11-7z"/></svg>
+        <span id="playPauseText">Pause</span>
+      </button>
+      <button id="waveBtn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        Trigger Wave
+      </button>
+      <button id="regenBtn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg>
+        New Network
+      </button>
+
+      <label class="slider-label">
+        Speed
+        <input type="range" id="speedSlider" min="0.5" max="3" step="0.1" value="1" />
+      </label>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="dot cyan"></span> Active neuron</div>
+      <div class="legend-item"><span class="dot pink"></span> Negative weight</div>
+      <div class="legend-item"><span class="dot blue"></span> Positive weight</div>
+    </div>
+
+    <footer>
+      <p>Built with vanilla HTML, CSS &amp; JavaScript (Canvas API) — no ML libraries, pure visualization.</p>
+      <p class="credit">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.94 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.62-2.805 5.64-5.475 5.94.435.375.81 1.11.81 2.25 0 1.635-.015 2.945-.015 3.345 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Built by <a href="https://github.com/AliyaThabasum01" target="_blank">Aliya Thabasum</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
